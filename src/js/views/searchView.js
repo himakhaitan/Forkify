@@ -42,6 +42,15 @@ const renderRecipe = (recipe) => {
   elements.searchResList.insertAdjacentHTML("beforeend", markup);
 };
 
+export const highlightSelected = id => {
+
+  const resultsArr = Array.from(document.querySelectorAll('.results__link'));
+  resultsArr.forEach(el => {
+    el.classList.remove('results__link--active')
+  })
+  document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+}
+
 const createButton = (page, type) => {
   return `  <button class="btn-inline results__btn--${type}" data-goto= "${type === 'prev' ? page-1 : page+1}">
   <span>Page ${type === 'prev' ? page-1 : page+1}</span>
